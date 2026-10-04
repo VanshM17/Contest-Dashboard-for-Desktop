@@ -1,8 +1,8 @@
 # CP Contest Dashboard
 
 A live desktop wallpaper that shows upcoming competitive programming contests from **Codeforces, LeetCode, CodeChef and AtCoder** in one glass-style panel. Built with plain HTML, CSS and JavaScript, with no frameworks and no build step, and meant to run through [Lively Wallpaper](https://github.com/rocksdanister/lively).
+<img width="1672" height="941" alt="Minimal Desktop with Contest Dashboard" src="https://github.com/user-attachments/assets/6ad7d079-0dae-4a05-a8e5-60ba2d4957ab" />
 
-> Add a screenshot here: `![Dashboard preview](preview.png)`
 
 ## Features
 
