@@ -1,0 +1,254 @@
+:root {
+    --page-bg: #05070d;
+    --panel-bg: rgba(15, 20, 32, 0.6);
+    --panel-border: rgba(255, 255, 255, 0.12);
+    --card-bg: rgba(255, 255, 255, 0.045);
+    --border-color: rgba(255, 255, 255, 0.09);
+    --text-main: #f8fafc;
+    --text-sub: #8d97ab;
+    --text-faint: #5b6478;
+
+    --cf: #4d8dfd;
+    --lc: #ffa116;
+    --ac: #2fd480;
+    --cc: #c084fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+/* Reset default styles for html and body, set full viewport dimensions, hide overflow, and apply background color */
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--page-bg) !important;
+}
+/* Container for the wallpaper, set to full viewport dimensions, using flexbox to align items to the right with padding */
+.wallpaper-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+/* Main Dashboard having all the contest cards */
+.overlay {
+    zoom: 0.68;
+    width: 960px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 26px;
+    padding: 32px 32px 26px;
+    color: var(--text-main);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(30px) saturate(160%);
+    -webkit-backdrop-filter: blur(30px) saturate(160%);
+}
+/* Header section of the panel, using flexbox to align items and create spacing */
+.panel-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panel-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+/* Competitive Programming Text*/
+.eyebrow {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ff5353;
+}
+/*Upcoming Contests Text*/
+h1 {
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+}
+
+.panel-meta {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-faint);
+    text-align: right;
+}
+
+.panel-meta .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2fd480;
+    box-shadow: 0 0 6px #4affa1;
+    margin-right: 6px;
+}
+
+/* For customising Grid Layout */
+.contest-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Ticket-style tile cards, color-coded per platform */
+.contest-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+        radial-gradient(120% 100% at 100% 0%, color-mix(in srgb, var(--site-color) 14%, transparent), transparent 60%),
+        var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 18px 18px 16px;
+    border-radius: 16px;
+    aspect-ratio: 1 / 0.82;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.contest-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--site-color), transparent 130%);
+}
+
+.contest-card:hover {
+    transform: translateY(-7px);
+    zoom: 1.25;
+    border-color: color-mix(in srgb, var(--site-color) 55%, var(--border-color));
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.45),
+        0 0 0 1px color-mix(in srgb, var(--site-color) 30%, transparent),
+        0 0 26px color-mix(in srgb, var(--site-color) 22%, transparent);
+}
+
+.contest-card:hover .go-arrow {
+    opacity: 0.1;
+    transform: translate(0, 0);
+}
+
+.contest-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Site tag, small pill-shaped element with platform color and uppercase text */
+.site-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 10px 5px 7px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--site-color);
+    background: color-mix(in srgb, var(--site-color) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--site-color) 40%, transparent);
+}
+/* Site dot indicator, small circular element colored per platform */
+.site-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--site-color);
+}
+/* Status badge for live contests, smaller font size, bold weight, and flexbox alignment */
+.status-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-faint);
+    letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.status-badge.live {
+    color: #00ff5e;
+}
+/* Pulse dot for live contests, animated to fade in and out */
+.status-badge.live .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.9);
+    animation: pulse 0.3s infinite;
+}
+/* Contest title, larger font size, bold weight, and ellipsis for overflow */
+.contest-title {
+    font-size: 19px;
+    font-weight: 550;
+    color: var(--text-main);
+    line-height: 1.38;
+    letter-spacing: 0.2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 14px 0;
+}
+/* Contest footer section, using flexbox to align items and create spacing */
+.contest-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+/* Contest time display, smaller font size and bold weight */
+.contest-time {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-sub);
+}
+/*"Go" arrow that appears on hover, initially hidden and transitions into view */
+.go-arrow {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--site-color);
+    opacity: 0;
+    transform: translate(-4px, 0);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+/* Loading and empty states, centered text with padding */
+.loading, .empty {
+    font-size: 14px;
+    color: var(--text-sub);
+    text-align: center;
+    grid-column: span 3;
+    padding: 60px 0;
+}
+/* Pulse animation for live contest indicator, fading in and out */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.25; }
+    100% { opacity: 1; }
+}
