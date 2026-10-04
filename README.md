@@ -32,16 +32,24 @@ cp-contest-dashboard/
 ├── index.html   # markup
 ├── style.css    # styling
 └── script.js    # data fetching, filtering and rendering
+└── image.png    # an example image for how the project would look on desktop
+
 ```
 
 Keep all three files in the same folder, because `index.html` loads the other two by relative path.
 
 ## Setting it up in Lively
 
-1. Install Lively Wallpaper and open it from the system tray.
+1. Install Lively Wallpaper and open it from the system tray or from the desktop shortcut.
+   
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a9d00c12-70f9-44ae-be07-c28fac9d2f4a" />
+
 2. Click **Add Wallpaper** (the **+** button), or drag and drop `index.html` into the Lively window.
+   
+   <img width="672" height="727" alt="image" src="https://github.com/user-attachments/assets/46b1a220-7bec-4476-bca0-fbbcd73ee79e" />
+
 3. Lively imports it as a web wallpaper. Select it in your library to apply it.
-4. Check that the cards load. If the page looks unstyled or stays on "Loading schedule...", Lively probably imported only `index.html` without `style.css` and `script.js`. In that case, use the packaging method below.
+5. Check that the cards load. If the page looks unstyled or stays on "Loading schedule...", Lively probably imported only `index.html` without `style.css` and `script.js`. In that case, use the packaging method below.
 
 ### Packaging as a Lively zip (if the files don't load)
 
